@@ -26,12 +26,25 @@ end
 
 defmodule LiveState.Test.FakeSchema do
   @moduledoc false
+  alias LiveState.Test.RelatedSchema
   use Ecto.Schema
 
   schema "fake_table" do
     field :foo, :string
     field :name, :string
     field :birth_date, :utc_datetime
+
+    belongs_to :related, RelatedSchema
     timestamps()
+  end
+end
+
+defmodule LiveState.Test.RelatedSchema do
+  @moduledoc false
+
+  use Ecto.Schema
+
+  schema "fake_related_table" do
+    field :bar, :string
   end
 end

@@ -32,9 +32,10 @@ defmodule LiveState.EncoderTest do
     iso_date = DateTime.to_iso8601(now)
     assert %{
              foo: "bar",
-             inserted_at: ^iso_date
+             inserted_at: ^iso_date,
+             related: nil
            } =
-             LiveState.Encoder.encode(%FakeSchema{foo: "bar", inserted_at: now},
+             LiveState.Encoder.encode(%FakeSchema{foo: "bar", inserted_at: now, related: %Ecto.Association.NotLoaded{}},
                ignore_keys: [:__meta__]
              )
   end

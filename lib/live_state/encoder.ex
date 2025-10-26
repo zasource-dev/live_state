@@ -85,3 +85,9 @@ defimpl LiveState.Encoder, for: List do
     Enum.map(list, &Encoder.encode(&1, opts))
   end
 end
+
+if Code.ensure_compiled(Ecto.Association.NotLoaded) do
+  defimpl LiveState.Encoder, for: Ecto.Association.NotLoaded  do
+    def encode(_, _), do: nil
+  end
+end

@@ -11,7 +11,8 @@ defmodule LiveState.Test.SchemaChannel do
        thing: %FakeSchema{
          foo: "bar",
          inserted_at: DateTime.utc_now(),
-         updated_at: DateTime.utc_now()
+         updated_at: DateTime.utc_now(),
+         related: %Ecto.Association.NotLoaded{}
        }
      }}
   end
